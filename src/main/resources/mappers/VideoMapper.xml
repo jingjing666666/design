@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ssm.promotion.core.dao.VideoDao">
-  <resultMap id="BaseResultMap" type="com.ssm.promotion.core.entity.Video">
+  <resultMap id="BaseResultMap" type="Video">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
@@ -10,35 +10,34 @@
     <result column="user_id" jdbcType="INTEGER" property="userId" />
     <result column="classify" jdbcType="VARCHAR" property="classify" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from video
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.ssm.promotion.core.entity.Video">
-    insert into video (id, name, video_url, 
-      create_time, update_time, user_id, 
-      classify)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{userId,jdbcType=INTEGER}, 
-      #{classify,jdbcType=VARCHAR})
+  <insert id="insertVideo" useGeneratedKeys="true" keyProperty="id" parameterType="Video">
+    insert into video( name, video_url,create_time, update_time, user_id,classify)
+    values(#{name},#{videoUrl},#{createTime},#{updateTime},#{userId},#{classify})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.ssm.promotion.core.entity.Video">
+
+  <update id="updateVideo" parameterType="Article">
     update video
-    set name = #{name,jdbcType=VARCHAR},
-      video_url = #{videoUrl,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      user_id = #{userId,jdbcType=INTEGER},
-      classify = #{classify,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    set
+    name=#{name},video_url=#{videoUrl},update_time=#{updateTime},user_id=#{userId},
+    classify=#{classify}
+    where id=#{id}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, video_url, create_time, update_time, user_id, classify
-    from video
-    where id = #{id,jdbcType=INTEGER}
+
+
+  <delete id="delVideo" parameterType="String">
+    delete from
+    video
+    where id=#{id}
+  </delete>
+
+  <select id="getVideoById" parameterType="String" resultMap="BaseResultMap">
+    select id,article_title,article_create_date,article_content,add_name
+    from article where id=#{id}
   </select>
+
   <select id="selectAll" resultMap="BaseResultMap">
     select id, name, video_url, create_time, update_time, user_id, classify
     from video
   </select>
+
 </mapper>

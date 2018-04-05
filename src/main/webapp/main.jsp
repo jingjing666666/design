@@ -4,7 +4,9 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>perfect-ssm系统主页</title>
+    <title>树莓后台- 登录</title>
+    <meta name="keywords" content="树莓后台">
+    <meta name="description" content="树莓后台">
     <link rel="stylesheet" type="text/css"
           href="${pageContext.request.contextPath}/jquery-easyui-1.3.3/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css"

@@ -185,7 +185,6 @@ public class ArticleController {
         Article article = articleService.findById(id);
         Result result = ResultGenerator.genSuccessResult();
         result.setData(article);
-        log.info("request: article/findById");
         return result;
     }
 }
