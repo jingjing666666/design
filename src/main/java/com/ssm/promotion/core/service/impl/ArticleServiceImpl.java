@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Map;
 
 
-@Service("articleService")
+@Service
 public class ArticleServiceImpl implements ArticleService {
 
     private static final Logger log = Logger.getLogger(ArticleService.class);

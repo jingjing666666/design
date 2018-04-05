@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath*:/jdbc-druid-config.properties</value>
-            </list>
-        </property>
-    </bean>
+    <context:property-placeholder location="classpath:jdbc-druid-config.properties" />
 
     <!-- 配置mybatis的sqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -34,7 +29,7 @@
         <property name="password" value="${jdbc.password}"/>
 
         <!-- 配置初始化大小、最小、最大 -->
-        <property name="initialSize" value="${druid.initialSize}"/>
+        <property name="initialSize" value="${jdbc.initialSize}"/>
         <property name="minIdle" value="${druid.minIdle}"/>
         <property name="maxActive" value="${druid.maxActive}"/>
 
@@ -56,7 +51,7 @@
         <property name="maxPoolPreparedStatementPerConnectionSize"
                   value="${druid.maxPoolPreparedStatementPerConnectionSize}"/>
 
-        <!-- 配置监控统计拦截的filters -->
+         <!--配置监控统计拦截的filters -->
         <property name="filters" value="${druid.filters}"/>
 
         <!--Start 慢sql监控及log4j设置-->
@@ -70,7 +65,7 @@
 
     </bean>
 
-    <!-- 慢SQL记录 -->
+     <!--慢SQL记录 -->
     <bean id="stat-filter" class="com.alibaba.druid.filter.stat.StatFilter">
         <property name="mergeSql" value="true"/>
         <!-- 慢sql时间设置,即执行时间大于200毫秒的都是慢sql -->

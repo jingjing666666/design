@@ -50,17 +50,17 @@ public class RedisTest {
         redisUtil.put("stringList", stringList);
     }
 
-    @Test
-    public void redisGetListTest() {
-        //获取
-        List<String> stringList = (List<String>) redisUtil.get("stringList", List.class);
-        if (stringList.size() > 0) {
-            for (String string : stringList
-                    ) {
-                System.out.println(string);
-            }
-        }
-    }
+//    @Test
+//    public void redisGetListTest() {
+//        //获取
+////        List<String> stringList = (List<String>) redisUtil.get("stringList", List.class);
+//        if (stringList.size() > 0) {
+//            for (String string : stringList
+//                    ) {
+//                System.out.println(string);
+//            }
+//        }
+//    }
 
     @Test
     public void redisPutListArticleTest() {

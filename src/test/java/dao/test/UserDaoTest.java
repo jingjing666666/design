@@ -24,12 +24,12 @@ public class UserDaoTest {
     @Test
     public void loginTest() {
         User user = new User();
-        user.setUserName("admin");
+        user.setUserName("web");
         user.setPassword("123456");
         //断言此姓名和密码的用户为空
         Assert.assertEquals(userDao.login(user), null);
         User user2 = new User();
-        user2.setUserName("admin");
+        user2.setUserName("web");
         user2.setPassword(MD5Util.MD5Encode("123456", "UTF-8"));
         //断言此姓名和密码的用户可以登录成功,且用户id为2
         Assert.assertTrue(userDao.login(user2).getId() == 2);

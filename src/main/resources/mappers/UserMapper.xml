@@ -12,11 +12,11 @@
 
     <select id="login" parameterType="User" resultMap="UserResult">
         select id,user_name,password,role_name from
-        ssm_user where user_name=#{userName} and password=#{password} limit 1
+        user where user_name=#{userName} and password=#{password} limit 1
     </select>
 
     <select id="findUsers" parameterType="Map" resultMap="UserResult">
-        select id,user_name,password,role_name from ssm_user
+        select id,user_name,password,role_name from user
         <where>
             <if test="userName!=null and userName!='' ">
                 and user_name like #{userName}
@@ -28,7 +28,7 @@
     </select>
 
     <select id="getTotalUser" parameterType="Map" resultType="Long">
-        select count(*) from ssm_user
+        select count(*) from user
         <where>
             <if test="userName!=null and userName!='' ">
                 and user_name like #{userName}
@@ -37,12 +37,12 @@
     </select>
 
     <insert id="addUser" parameterType="User">
-        insert into ssm_user(user_name,password)
+        insert into user(user_name,password)
         values(#{userName},#{password})
     </insert>
 
     <update id="updateUser" parameterType="User">
-        update ssm_user
+        update user
         <set>
             <if test="userName!=null and userName!='' ">
                 user_name=#{userName},
@@ -55,7 +55,7 @@
     </update>
 
     <delete id="deleteUser" parameterType="Integer">
-        delete from ssm_user
+        delete from user
         where id=#{id}
     </delete>
 </mapper> 

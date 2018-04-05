@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
  * @project_name perfect-ssm
  * @date 2017-3-1
  */
-@Repository
+
 public interface UserDao {
 
     /**
@@ -59,4 +59,13 @@ public interface UserDao {
      * @return
      */
     public int deleteUser(Integer id);
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(User record);
+
+    User selectByPrimaryKey(Integer id);
+
+    List<User> selectAll();
+
+    int updateByPrimaryKey(User record);
 }

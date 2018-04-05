@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Map;
 
-@Repository
+
 public interface PictureDao {
     /**
      * 返回相应的数据集合

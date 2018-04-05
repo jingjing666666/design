@@ -1,4 +1,4 @@
-package com.ssm.promotion.core.admin;
+package com.ssm.promotion.core.web;
 
 import com.ssm.promotion.core.common.Result;
 import com.ssm.promotion.core.common.ResultGenerator;

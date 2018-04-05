@@ -80,7 +80,7 @@ LOCK TABLES `ssm_user` WRITE;
 
 INSERT INTO `ssm_user` (`id`, `user_name`, `password`, `role_name`)
 VALUES
-	(2,'admin','e10adc3949ba59abbe56e057f20f883e','系统管理员'),
+	(2,'web','e10adc3949ba59abbe56e057f20f883e','系统管理员'),
 	(167,'ee','08a4415e9d594ff960030b921d42b91e','普通管理员');
 
 /*!40000 ALTER TABLE `ssm_user` ENABLE KEYS */;

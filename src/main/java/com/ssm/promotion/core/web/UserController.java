@@ -1,4 +1,4 @@
-package com.ssm.promotion.core.admin;
+package com.ssm.promotion.core.web;
 
 import com.ssm.promotion.core.common.Result;
 import com.ssm.promotion.core.common.ResultGenerator;
@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,7 +61,7 @@ public class UserController {
     }
 
 
-    /**
+    /**数据表格
      * @param page
      * @param rows
      * @param s_user

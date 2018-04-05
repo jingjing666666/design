@@ -13,7 +13,7 @@
     </resultMap>
 
     <select id="findPictures" parameterType="Map" resultMap="PictureResult">
-        select id,path,type,time,url,grade from ssm_picture
+        select id,path,type,time,url,grade from picture
         <where>
             <if test="url!=null and url!='' ">
                 and url like #{url}
@@ -34,7 +34,7 @@
     </select>
 
     <select id="getTotalPictures" parameterType="Map" resultType="Long">
-        select count(*) from ssm_picture
+        select count(*) from picture
         <where>
             <if test="url!=null and url!='' ">
                 and url = #{url}
@@ -48,12 +48,12 @@
         </where>
     </select>
     <insert id="insertPicture" parameterType="Picture">
-		insert into ssm_picture(path,type,time,url,grade)
+		insert into picture(path,type,time,url,grade)
 		values(#{path},#{type},#{time},#{url},#{grade})
 	</insert>
 
     <update id="updPicture" parameterType="Picture">
-		update ssm_picture
+		update picture
 		set
 		path=#{path},url=#{url},type=#{type},time=#{time},
 		grade=#{grade}
@@ -63,11 +63,11 @@
 
     <delete id="delPicture" parameterType="String">
 		delete from
-		ssm_picture where id=#{id}
+		picture where id=#{id}
 	</delete>
 
     <select id="findPictureById" parameterType="String" resultMap="PictureResult">
 		select id,path,type,time,url,grade
-		from ssm_picture where id=#{id}
+		from picture where id=#{id}
 	</select>
 </mapper> 

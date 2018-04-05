@@ -27,9 +27,9 @@ public class RedisCacheConfig extends CachingConfigurerSupport {
         //ip地址
         redisConnectionFactory.setHostName("127.0.0.1");
         //端口号
-        redisConnectionFactory.setPort(17779);
+        redisConnectionFactory.setPort(6379);
         //redis登录密码
-        redisConnectionFactory.setPassword("ILfr6LTKhpNJ0x5i");
+        redisConnectionFactory.setPassword("666666yuan");
         //database 默认是16个，不设置的话默认为0
         redisConnectionFactory.setDatabase(2);
         return redisConnectionFactory;

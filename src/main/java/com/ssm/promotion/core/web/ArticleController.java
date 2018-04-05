@@ -1,4 +1,4 @@
-package com.ssm.promotion.core.admin;
+package com.ssm.promotion.core.web;
 
 import com.ssm.promotion.core.common.Result;
 import com.ssm.promotion.core.common.ResultGenerator;
@@ -40,10 +40,7 @@ public class ArticleController {
      * @throws Exception
      */
     @RequestMapping(value = "/datagrid", method = RequestMethod.POST)
-    public String list(
-            @RequestParam(value = "page", required = false) String page,
-            @RequestParam(value = "rows", required = false) String rows,
-            Article article, HttpServletResponse response) throws Exception {
+    public String list(@RequestParam(value = "page", required = false) String page, @RequestParam(value = "rows", required = false) String rows, Article article, HttpServletResponse response) throws Exception {
         Map<String, Object> map = new HashMap<String, Object>();
         if (page != null && rows != null) {
             PageBean pageBean = new PageBean(Integer.parseInt(page),

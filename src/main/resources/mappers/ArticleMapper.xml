@@ -13,7 +13,7 @@
     </resultMap>
 
     <select id="findArticles" parameterType="Map" resultMap="ArticleResult">
-        select id,article_title,article_create_date,article_content,add_name from ssm_article
+        select id,article_title,article_create_date,article_content,add_name from article
         <where>
             <if test="articleTitle!=null and articleTitle!='' ">
                 and article_title like #{articleTitle}
@@ -25,7 +25,7 @@
     </select>
 
     <select id="getTotalArticles" parameterType="Map" resultType="Long">
-        select count(*) from ssm_article
+        select count(*) from article
         <where>
             <if test="articleTitle!=null and articleTitle!='' ">
                 and article_title like #{articleTitle}
@@ -35,14 +35,14 @@
 
     <insert id="insertArticle" useGeneratedKeys="true" keyProperty="id" parameterType="Article">
 		insert into
-		ssm_article(article_title,article_create_date,article_content,add_name)
+		article(article_title,article_create_date,article_content,add_name)
 		values(#{articleTitle},#{articleCreateDate},#{articleContent},#{addName})
 	</insert>
 
     <update id="updArticle" parameterType="Article">
 		update ssm_article
 		set
-		article_title=#{articleTitle},article_content=#{articleContent},
+		title=#{articleTitle},article_content=#{articleContent},
 		add_name=#{addName}
 		where id=#{id}
 	</update>
@@ -50,12 +50,12 @@
 
     <delete id="delArticle" parameterType="String">
 		delete from
-		ssm_article
+		article
 		where id=#{id}
 	</delete>
 
     <select id="getArticleById" parameterType="String" resultMap="ArticleResult">
 		select id,article_title,article_create_date,article_content,add_name
-		from ssm_article where id=#{id}
+		from article where id=#{id}
 	</select>
 </mapper> 
