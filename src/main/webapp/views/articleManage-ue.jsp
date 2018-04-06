@@ -6,28 +6,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>articleManger</title>
     <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/jquery-easyui-1.3.3/themes/default/easyui.css">
+          href="../jquery-easyui-1.3.3/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css"
-          href="${pageContext.request.contextPath}/jquery-easyui-1.3.3/themes/icon.css">
+          href="../jquery-easyui-1.3.3/themes/icon.css">
     <script type="text/javascript"
-            src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/jquery.min.js"></script>
+            src="../jquery-easyui-1.3.3/jquery.min.js"></script>
     <script type="text/javascript"
-            src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
+            src="../jquery-easyui-1.3.3/jquery.easyui.min.js"></script>
     <script type="text/javascript"
-            src="${pageContext.request.contextPath}/jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
+            src="../jquery-easyui-1.3.3/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript"
-            src="${pageContext.request.contextPath}/ueditor/ueditor.config.js">
+            src="../ueditor/ueditor.config.js">
 
     </script>
     <script type="text/javascript"
-            src="${pageContext.request.contextPath}/ueditor/ueditor.all.min.js">
+            src="../ueditor/ueditor.all.min.js">
 
     </script>
 </head>
 <body style="margin:1px;" id="ff">
-<table id="dg" title="文本信息管理" class="easyui-datagrid" pagination="true"
+<table id="dg" title="文章信息管理" class="easyui-datagrid" pagination="true"
        rownumbers="true" fit="true"
-       url="${pageContext.request.contextPath}/articles/datagrid" toolbar="#tb">
+       url="../articles/datagrid" toolbar="#tb">
     <thead data-options="frozen:true">
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
@@ -45,17 +45,17 @@
 <div id="tb">
     <div>
         <a href="javascript:openArticleAddDialog()" class="easyui-linkbutton"
-           iconCls="icon-add" plain="true">添加</a> <a
+           iconCls="icon-add" plain="true"><div style="color: #1E90FF;">添加</div></a> <a
             href="javascript:openArticleModifyDialog()"
-            class="easyui-linkbutton" iconCls="icon-edit" plain="true">修改</a> <a
+            class="easyui-linkbutton" iconCls="icon-edit" plain="true"><div style="color: #1E90FF;">修改</div></a> <a
             href="javascript:deleteArticle()" class="easyui-linkbutton"
-            iconCls="icon-remove" plain="true">删除</a>
+            iconCls="icon-remove" plain="true"><div style="color: #DC143C;">删除</div></a>
     </div>
     <div>
-        &nbsp;标题：&nbsp;<input type="text" id="articleTitle" size="20"
+        &nbsp;<span style="color: #1E90FF;">标题：</span>&nbsp;<input type="text" id="articleTitle" size="20"
                               onkeydown="if(event.keyCode==13) searchArticle()"/>&nbsp; <a
             href="javascript:searchArticle()" class="easyui-linkbutton"
-            iconCls="icon-search" plain="true">搜索</a>
+            iconCls="icon-search" plain="true"><div style="color: #1E90FF;">搜索</div></a>
     </div>
 </div>
 
@@ -94,7 +94,7 @@
 
 
 <script type="text/javascript">
-    var url = "${pageContext.request.contextPath}/articles";
+    var url = "../articles";
     var method;
     function ResetEditor() {
         UE.getEditor('myEditor', {
@@ -228,7 +228,7 @@
     }
 
     function formatHref(val, row) {
-        return "<a href='${pageContext.request.contextPath}/article.html?id=" + row.id + "' target='_blank'>查看详情</a>";
+        return "<a href='../article.html?id=" + row.id + "' target='_blank'>查看详情</a>";
     }
 
     function resetValue() {
