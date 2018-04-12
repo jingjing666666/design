@@ -9,6 +9,7 @@
           href="../jquery-easyui-1.3.3/themes/default/easyui.css">
     <link rel="stylesheet" type="text/css"
           href="../jquery-easyui-1.3.3/themes/icon.css">
+    <link rel="stylesheet" href="../views/css/patch.css">
     <script type="text/javascript"
             src="../jquery-easyui-1.3.3/jquery.min.js"></script>
     <script type="text/javascript"
