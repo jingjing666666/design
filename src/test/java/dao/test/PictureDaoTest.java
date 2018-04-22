@@ -1,7 +1,7 @@
 package dao.test;
 
-import com.ssm.promotion.core.dao.PictureDao;
-import com.ssm.promotion.core.entity.Picture;
+import com.jingjing.manage.dao.PictureDao;
+import com.jingjing.manage.entity.Picture;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

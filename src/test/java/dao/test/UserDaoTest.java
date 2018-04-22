@@ -1,8 +1,8 @@
 package dao.test;
 
-import com.ssm.promotion.core.dao.UserDao;
-import com.ssm.promotion.core.entity.User;
-import com.ssm.promotion.core.util.MD5Util;
+import com.jingjing.manage.dao.UserDao;
+import com.jingjing.manage.entity.User;
+import com.jingjing.manage.util.MD5Util;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

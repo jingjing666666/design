@@ -1,8 +1,8 @@
 package dao.test;
 
-import com.ssm.promotion.core.dao.ArticleDao;
-import com.ssm.promotion.core.entity.Article;
-import com.ssm.promotion.core.util.DateUtil;
+import com.jingjing.manage.dao.ArticleDao;
+import com.jingjing.manage.entity.Article;
+import com.jingjing.manage.util.DateUtil;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,8 +1,8 @@
 package service.test;
 
-import com.ssm.promotion.core.entity.Picture;
-import com.ssm.promotion.core.service.PictureService;
-import com.ssm.promotion.core.util.DateUtil;
+import com.jingjing.manage.entity.Picture;
+import com.jingjing.manage.service.PictureService;
+import com.jingjing.manage.util.DateUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

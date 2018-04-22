@@ -15,6 +15,7 @@
 
     <link href="css/animate.min.css" rel="stylesheet">
     <link href="css/style.min862f.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
@@ -30,10 +31,10 @@
     <div>
         <div>
 
-            <h1 class="logo-name">13</h1>
+            <h3 class="logo-name">树莓</h3>
 
         </div>
-        <h3>欢迎使用 perfect-ssm</h3>
+        <h3>欢迎使用后台管理系统</h3>
 
         <form class="m-t" role="form" id="adminlogin" method="post"
               name="adminlogin" onsubmit="return false" action="##">
@@ -48,7 +49,8 @@
             <button type="button" class="btn btn-primary block full-width m-b" onclick="javascript:login();">登 录
             </button>
             <p class="text-muted text-center"><a href="##" onclick="javascript:adminlogin.reset();return false;">
-                <small>重置</small>
+                清空
+                <%--<small>重置</small>--%>
             </a>
             </p>
 

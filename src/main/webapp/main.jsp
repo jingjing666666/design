@@ -58,6 +58,7 @@
 <body class="easyui-layout">
 <div region="north" style="height: 78px;background-color: #FFFFFF">
     <table width="100%">
+        <h2 style="text-align:center;" >欢迎进入后台</h2>
         <tr>
             <td width="50%"></td>
             <td valign="bottom"
@@ -71,9 +72,6 @@
 <div region="center">
     <div class="easyui-tabs" fit="true" border="false" id="tabs">
         <div title="首页" data-options="iconCls:'icon-home'">
-            <div align="center" style="padding-top: 20px;"><a href="https://github.com/ZHENFENG13/perfect-ssm"
-                                                              target="_blank"
-                                                              style="font-size: 20px;"></a></div>
             <div align="center" style="padding-top: 50px">
                 <font color="grey" size="10"></font>
             </div>
@@ -101,13 +99,13 @@
                     data-options="plain:true,iconCls:'icon-tupian'"
                     style="width: 150px;"> 图片设置</a>
         </div>
-        <div title="用户管理" data-options="iconCls:'icon-students'"
+        <div title="分类管理" data-options="iconCls:'icon-students'"
              style="padding:10px">
             <a
                     href="javascript:openTab(' 图片设置','pictureManage.jsp?type=1&grade=1','icon-tupians')"
                     class="easyui-linkbutton"
                     data-options="plain:true,iconCls:'icon-student'"
-                    style="width: 150px;"> 用户列表</a>
+                    style="width: 150px;"> 分类列表</a>
         </div>
         <div title="视频管理" data-options="iconCls:'icon-fenlei'"
              style="padding:10px">

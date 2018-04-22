@@ -1,6 +1,6 @@
 package dao.test;
 
-import com.ssm.promotion.core.dao.VideoDao;
+import com.jingjing.manage.dao.VideoDao;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

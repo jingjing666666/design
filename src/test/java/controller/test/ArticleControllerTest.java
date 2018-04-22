@@ -1,7 +1,7 @@
 package controller.test;
 
 import com.alibaba.fastjson.JSONObject;
-import com.ssm.promotion.core.entity.Article;
+import com.jingjing.manage.entity.Article;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

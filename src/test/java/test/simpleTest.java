@@ -1,6 +1,6 @@
 package test;
 
-import com.ssm.promotion.core.util.MD5Util;
+import com.jingjing.manage.util.MD5Util;
 import org.junit.Test;
 
 /**

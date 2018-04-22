@@ -1,7 +1,7 @@
 package test;
 
-import com.ssm.promotion.core.entity.Article;
-import com.ssm.promotion.core.redis.RedisUtil;
+import com.jingjing.manage.entity.Article;
+import com.jingjing.manage.redis.RedisUtil;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;

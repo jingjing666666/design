@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.ssm.promotion.core.dao.ClassifyDao">
-  <resultMap id="BaseResultMap" type="com.ssm.promotion.core.entity.Classify">
+<mapper namespace="com.jingjing.manage.dao.ClassifyDao">
+  <resultMap id="BaseResultMap" type="com.jingjing.manage.entity.Classify">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="parent_id" jdbcType="INTEGER" property="parentId" />
@@ -14,7 +14,7 @@
     delete from classify
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.ssm.promotion.core.entity.Classify">
+  <insert id="insert" parameterType="com.jingjing.manage.entity.Classify">
     insert into classify (id, name, parent_id, 
       create_time, update_time, deleted, 
       parent_ids)
@@ -22,7 +22,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, 
       #{parentIds,jdbcType=VARCHAR})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.ssm.promotion.core.entity.Classify">
+  <update id="updateByPrimaryKey" parameterType="com.jingjing.manage.entity.Classify">
     update classify
     set name = #{name,jdbcType=VARCHAR},
       parent_id = #{parentId,jdbcType=INTEGER},

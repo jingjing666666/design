@@ -9,15 +9,3 @@
 {
     width: 100% !important;
 }
-.datagrid-view1 .datagrid-header,
-.datagrid-view1 .datagrid-body,
-.datagrid-header-inner,
-#tb>.datagrid-view>.datagrid-view1>.datagrid-header>.datagrid-header-inner >table.datagrid-htable
-#tb>.datagrid-view>.datagrid-view1>.datagrid-header>.datagrid-header-inner >table.datagrid-htable .tbody
-#tb>.datagrid-view>.datagrid-view1>.datagrid-header>.datagrid-header-inner >table.datagrid-htable .datagrid-header-row
-{
-    width: 100% !important;
-}
-.datagrid-header-inner .datagrid-htable .datagrid-header-row td .datagrid-header-rownumber{
-    width: 200px;
-}
