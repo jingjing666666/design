@@ -1,6 +1,9 @@
 package com.jingjing.manage.dao;
 
+import com.jingjing.manage.dto.ArticleDto;
 import com.jingjing.manage.entity.Article;
+import com.jingjing.manage.param.PageParam;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -10,7 +13,7 @@ import java.util.Map;
 public interface ArticleDao {
 	/**
 	 * 返回相应的数据集合
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -18,7 +21,7 @@ public interface ArticleDao {
 
 	/**
 	 * 数据数目
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -44,7 +47,7 @@ public interface ArticleDao {
 	 * @param id
 	 * @return
 	 */
-	public int delArticle(String id);
+	public int delArticle(Integer id);
 
 	/**
 	 * 根据id查找
@@ -52,8 +55,7 @@ public interface ArticleDao {
 	 * @param id
 	 * @return
 	 */
-	public Article getArticleById(String id);
-
+	public Article getArticleById(Integer id);
 
 
 	int deleteByPrimaryKey(Integer id);
@@ -62,7 +64,9 @@ public interface ArticleDao {
 
 	Article selectByPrimaryKey(Integer id);
 
-	List<Article> selectAll();
+	List<ArticleDto> selectAll(PageParam param);
+	List<ArticleDto> selectAllByType(Integer type);
+
 
 	int updateByPrimaryKey(Article record);
 

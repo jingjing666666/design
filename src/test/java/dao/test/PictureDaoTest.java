@@ -8,6 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Created by 13 on 2017/3/30.
  */
@@ -23,10 +27,17 @@ public class PictureDaoTest {
         for (int i = 1; i < 20; i++) {
             for (int j = 1; j < 20; j++) {
                 picture = new Picture();
-                picture.setType(j + "");
-                picture.setGrade(i + "");
+                picture.setType(j );
+//                picture.setGrade(i + "");
                 picture.setPath("upload/20170425_1714107.jpg");
-                picture.setTime("2017-04-25 17:15:44");
+                SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                try{
+                    Date date = dateFormat.parse("2017-08-21 12:22:32");
+                    picture.setCreateTime(new Date());
+                }catch (Exception e){
+
+                }
+
                 picture.setUrl("url");
                 pictureDao.insertPicture(picture);
             }

@@ -3,6 +3,7 @@ package com.jingjing.manage.service;
 import java.util.List;
 import java.util.Map;
 
+import com.github.pagehelper.PageInfo;
 import com.jingjing.manage.entity.User;
 
 /**
@@ -34,6 +35,7 @@ public interface UserService {
      */
     public int updateUser(User user);
 
+
     /**
      * @param user
      * @return
@@ -45,4 +47,6 @@ public interface UserService {
      * @return
      */
     public int deleteUser(Integer id);
+
+    PageInfo<User> list(Integer page, Integer pageSize);
 }

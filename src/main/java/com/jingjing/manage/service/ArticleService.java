@@ -1,6 +1,9 @@
 package com.jingjing.manage.service;
 
+import com.github.pagehelper.PageInfo;
+import com.jingjing.manage.dto.ArticleDto;
 import com.jingjing.manage.entity.Article;
+import com.jingjing.manage.param.PageParam;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +14,7 @@ import java.util.Map;
 public interface ArticleService {
 	/**
 	 * 返回相应的数据集合
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -19,7 +22,7 @@ public interface ArticleService {
 
 	/**
 	 * 数据数目
-	 * 
+	 *
 	 * @param map
 	 * @return
 	 */
@@ -47,7 +50,7 @@ public interface ArticleService {
 	 * @param id
 	 * @return
 	 */
-	public int deleteArticle(String id);
+	public int deleteArticle(Integer id);
 
 	/**
 	 * 根据id查找
@@ -55,5 +58,9 @@ public interface ArticleService {
 	 * @param id
 	 * @return
 	 */
-	public Article findById(String id);
+	public Article findById(Integer id);
+
+	PageInfo<ArticleDto> articleList(PageParam page);
+
+//    PageInfo<ArticleDto> articleList(Integer page, Integer pageSize,Integer type);
 }

@@ -1,8 +1,12 @@
 package com.jingjing.manage.web;
 
+import com.github.pagehelper.PageInfo;
 import com.jingjing.manage.common.Result;
+import com.jingjing.manage.dto.VideoDto;
+import com.jingjing.manage.entity.Article;
 import com.jingjing.manage.entity.Video;
 import com.jingjing.manage.common.ResultGenerator;
+import com.jingjing.manage.param.PageParam;
 import com.jingjing.manage.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,13 +21,24 @@ import java.util.Date;
 public class VideoController {
     @Autowired
     VideoService videoService;
+    /**
+     * 查找视频列表
+     * @param page
+     * @param pageSize
+     * @return
+     */
+    @RequestMapping(value = "/list", method = RequestMethod.POST)
+    @ResponseBody
+    public PageInfo<VideoDto> videoList(@RequestBody PageParam param){
+        return videoService.list(param);
+    }
 
     /**
      * 添加视频
      * @param video
      * @return
      */
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     @ResponseBody
     public Result add(@RequestBody Video video){
         int resultTotal = 0;
@@ -39,10 +54,10 @@ public class VideoController {
 
     /**
      * 修改
-     * @param article
+     * @param video
      * @return
      */
-    @RequestMapping(value = "", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     @ResponseBody
     public Result update(@RequestBody Video video) {
         int resultTotal = 0;
@@ -60,7 +75,7 @@ public class VideoController {
      * @param ids
      * @return
      */
-    @RequestMapping(value = "/{ids}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete/{ids}", method = RequestMethod.DELETE)
     @ResponseBody
     public Result delete(@PathVariable("ids") String ids) {
         if (ids.length() > 20) {
@@ -68,7 +83,7 @@ public class VideoController {
         }
         String[] idsStr = ids.split(",");
         for (int i = 0; i < idsStr.length; i++) {
-            videoService.deleteVideo(idsStr[i]);
+            videoService.deleteVideo(Integer.parseInt(idsStr[i]));
         }
         return ResultGenerator.genSuccessResult();
     }
@@ -82,7 +97,7 @@ public class VideoController {
      */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     @ResponseBody
-    public Result findById(@PathVariable("id") String id) throws Exception {
+    public Result findById(@PathVariable("id") Integer id) throws Exception {
         Video video = videoService.findById(id);
         Result result = ResultGenerator.genSuccessResult();
         result.setData(video);

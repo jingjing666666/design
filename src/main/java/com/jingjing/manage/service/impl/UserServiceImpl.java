@@ -5,6 +5,9 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.jingjing.manage.entity.Article;
 import com.jingjing.manage.service.UserService;
 import com.jingjing.manage.util.AntiXssUtil;
 import com.jingjing.manage.entity.User;
@@ -40,8 +43,12 @@ public class UserServiceImpl implements UserService {
         if ("web".equals(user.getUserName())) {
             return 0;
         }
-        user.setUserName(AntiXssUtil.replaceHtmlCode(user.getUserName()));
-        return userDao.updateUser(user);
+        User u = userDao.findUserById(user.getId());
+        System.out.println("user u" +u.getId());
+        u.setUserName(user.getUserName());
+        u.setPassword(user.getPassword());
+        u.setDeleted(user.getDeleted());
+        return userDao.updateUser(u);
     }
 
     @Override
@@ -67,4 +74,13 @@ public class UserServiceImpl implements UserService {
         return userDao.deleteUser(id);
     }
 
+    @Override
+    public PageInfo<User> list(Integer page, Integer pageSize) {
+        if (page==null||page.equals("")||pageSize==null||pageSize.equals("")){
+            return null;
+        }
+        PageHelper.startPage(page,pageSize);
+        PageInfo<User> articlePageInfo=new PageInfo<>(userDao.selectAll());
+        return articlePageInfo;
+    }
 }

@@ -1,9 +1,8 @@
 package com.jingjing.manage.entity;
 
 import java.io.Serializable;
-/**
- * Created by yuanqingjing on 2018/4/9
- */
+import java.util.Date;
+
 public class User implements Serializable {
     private Integer id;
 
@@ -12,6 +11,10 @@ public class User implements Serializable {
     private String password;
 
     private String roleName;
+
+    private Date createTime;
+
+    private Integer deleted;
 
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +50,22 @@ public class User implements Serializable {
         this.roleName = roleName;
     }
 
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
+    }
+
     @Override
     public boolean equals(Object that) {
         if (this == that) {
@@ -60,9 +79,11 @@ public class User implements Serializable {
         }
         User other = (User) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
-            && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
-            && (this.getRoleName() == null ? other.getRoleName() == null : this.getRoleName().equals(other.getRoleName()));
+                && (this.getUserName() == null ? other.getUserName() == null : this.getUserName().equals(other.getUserName()))
+                && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
+                && (this.getRoleName() == null ? other.getRoleName() == null : this.getRoleName().equals(other.getRoleName()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+                && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
     }
 
     @Override
@@ -73,6 +94,8 @@ public class User implements Serializable {
         result = prime * result + ((getUserName() == null) ? 0 : getUserName().hashCode());
         result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
         result = prime * result + ((getRoleName() == null) ? 0 : getRoleName().hashCode());
+        result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
+        result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         return result;
     }
 
@@ -86,6 +109,8 @@ public class User implements Serializable {
         sb.append(", userName=").append(userName);
         sb.append(", password=").append(password);
         sb.append(", roleName=").append(roleName);
+        sb.append(", createTime=").append(createTime);
+        sb.append(", deleted=").append(deleted);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();

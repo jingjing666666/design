@@ -64,17 +64,17 @@ public class RedisTest {
 
     @Test
     public void redisPutListArticleTest() {
-        List<Article> articles = new ArrayList<>();
-        Article article1 = new Article();
-        article1.setId("1");
-        article1.setArticleContent("article1");
-        Article article2 = new Article();
-        article2.setId("2");
-        article2.setArticleContent("article2");
-        articles.add(article1);
-        articles.add(article2);
+//        List<Article> articles = new ArrayList<>();
+//        Article article1 = new Article();
+//        article1.setId("1");
+//        article1.setArticleContent("article1");
+//        Article article2 = new Article();
+//        article2.setId("2");
+//        article2.setArticleContent("article2");
+//        articles.add(article1);
+//        articles.add(article2);
         //添加
-        redisUtil.put("articles", articles);
+//        redisUtil.put("articles", articles);
     }
 
     @Test

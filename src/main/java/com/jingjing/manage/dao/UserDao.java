@@ -55,13 +55,13 @@ public interface UserDao {
      * @return
      */
     public int deleteUser(Integer id);
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(User record);
 
-    User selectByPrimaryKey(Integer id);
+    public int insert(User record);
 
-    List<User> selectAll();
 
-    int updateByPrimaryKey(User record);
+    public List<User> selectAll();
+
+
+    public User findUserById(Integer id);
 }

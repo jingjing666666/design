@@ -47,9 +47,8 @@ public class Result<T> implements Serializable {
     public String toString() {
         return "Result{" +
                 "resultCode=" + resultCode +
-                ", message='" + message + '\'' +
-                ", data={" + data.toString() + "}" +
-                '}';
+                ", message='" + message ;
+
     }
 
 }

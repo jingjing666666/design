@@ -2,9 +2,7 @@ package com.jingjing.manage.entity;
 
 import java.io.Serializable;
 import java.util.Date;
-/**
- * Created by yuanqingjing on 2018/4/9
- */
+
 public class Video implements Serializable {
     private Integer id;
 
@@ -18,7 +16,9 @@ public class Video implements Serializable {
 
     private Integer userId;
 
-    private String classify;
+    private Integer classifyId;
+
+    private Integer deleted;
 
     private static final long serialVersionUID = 1L;
 
@@ -70,12 +70,20 @@ public class Video implements Serializable {
         this.userId = userId;
     }
 
-    public String getClassify() {
-        return classify;
+    public Integer getClassifyId() {
+        return classifyId;
     }
 
-    public void setClassify(String classify) {
-        this.classify = classify;
+    public void setClassifyId(Integer classifyId) {
+        this.classifyId = classifyId;
+    }
+
+    public Integer getDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(Integer deleted) {
+        this.deleted = deleted;
     }
 
     @Override
@@ -91,12 +99,13 @@ public class Video implements Serializable {
         }
         Video other = (Video) that;
         return (this.getId() == null ? other.getId() == null : this.getId().equals(other.getId()))
-            && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
-            && (this.getVideoUrl() == null ? other.getVideoUrl() == null : this.getVideoUrl().equals(other.getVideoUrl()))
-            && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
-            && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
-            && (this.getClassify() == null ? other.getClassify() == null : this.getClassify().equals(other.getClassify()));
+                && (this.getName() == null ? other.getName() == null : this.getName().equals(other.getName()))
+                && (this.getVideoUrl() == null ? other.getVideoUrl() == null : this.getVideoUrl().equals(other.getVideoUrl()))
+                && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
+                && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+                && (this.getUserId() == null ? other.getUserId() == null : this.getUserId().equals(other.getUserId()))
+                && (this.getClassifyId() == null ? other.getClassifyId() == null : this.getClassifyId().equals(other.getClassifyId()))
+                && (this.getDeleted() == null ? other.getDeleted() == null : this.getDeleted().equals(other.getDeleted()));
     }
 
     @Override
@@ -109,7 +118,8 @@ public class Video implements Serializable {
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
         result = prime * result + ((getUserId() == null) ? 0 : getUserId().hashCode());
-        result = prime * result + ((getClassify() == null) ? 0 : getClassify().hashCode());
+        result = prime * result + ((getClassifyId() == null) ? 0 : getClassifyId().hashCode());
+        result = prime * result + ((getDeleted() == null) ? 0 : getDeleted().hashCode());
         return result;
     }
 
@@ -125,11 +135,10 @@ public class Video implements Serializable {
         sb.append(", createTime=").append(createTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", userId=").append(userId);
-        sb.append(", classify=").append(classify);
+        sb.append(", classifyId=").append(classifyId);
+        sb.append(", deleted=").append(deleted);
         sb.append(", serialVersionUID=").append(serialVersionUID);
         sb.append("]");
         return sb.toString();
     }
-
-
 }

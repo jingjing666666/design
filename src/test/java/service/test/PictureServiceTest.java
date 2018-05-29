@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.Date;
+
 /**
  * Created by 13 on 2017/3/30.
  */
@@ -25,10 +27,10 @@ public class PictureServiceTest {
     public void addPictureTest() throws Exception {
         Picture picture = new Picture();
         picture.setPath("path");
-        picture.setTime(DateUtil.getCurrentDateStr());
+        picture.setCreateTime(new Date());
         picture.setUrl("url");
-        picture.setType("2");
-        picture.setGrade("1");
+        picture.setType(2);
+//        picture.setGrade("1");
         pictureService.addPicture(picture);
     }
 

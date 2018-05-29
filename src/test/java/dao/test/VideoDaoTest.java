@@ -16,6 +16,6 @@ public class VideoDaoTest {
     VideoDao videoDao;
     @Test
     public void test(){
-        videoDao.delVideo("1");
+        videoDao.delVideo(1);
     }
 }

@@ -9,36 +9,40 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
     <result column="deleted" jdbcType="INTEGER" property="deleted" />
     <result column="parent_ids" jdbcType="VARCHAR" property="parentIds" />
+    <result column="type" jdbcType="INTEGER" property="type" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+  <delete id="delClassify" parameterType="java.lang.Integer">
     delete from classify
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </delete>
-  <insert id="insert" parameterType="com.jingjing.manage.entity.Classify">
-    insert into classify (id, name, parent_id, 
-      create_time, update_time, deleted, 
-      parent_ids)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{deleted,jdbcType=INTEGER}, 
-      #{parentIds,jdbcType=VARCHAR})
+  <insert id="insertClassify" parameterType="com.jingjing.manage.entity.Classify">
+    insert into classify (name, parent_id,create_time,update_time, deleted,parent_ids,type)
+    values (#{name},#{parentId},#{createTime},#{updateTime},#{deleted}, #{parentIds},#{type})
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.jingjing.manage.entity.Classify">
+  <update id="updClassify" parameterType="com.jingjing.manage.entity.Classify">
     update classify
-    set name = #{name,jdbcType=VARCHAR},
-      parent_id = #{parentId,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      deleted = #{deleted,jdbcType=INTEGER},
-      parent_ids = #{parentIds,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+    set name = #{name},
+      parent_id = #{parentId},
+      create_time = #{createTime},
+      update_time = #{updateTime},
+      deleted = #{deleted},
+      parent_ids = #{parentIds},
+      type =#{type}
+    where id = #{id}
   </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, name, parent_id, create_time, update_time, deleted, parent_ids
+  <select id="getClassifyById" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select id, name, parent_id, create_time, update_time, deleted, parent_ids,type
     from classify
-    where id = #{id,jdbcType=INTEGER}
+    where id = #{id}
   </select>
   <select id="selectAll" resultMap="BaseResultMap">
-    select id, name, parent_id, create_time, update_time, deleted, parent_ids
+    select id, name, parent_id, create_time, update_time, deleted, parent_ids,type
     from classify
+  </select>
+  <select id="getLevel" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM classify where type =#{id}
+  </select>
+  <select id="findchildren" parameterType="Integer" resultMap="BaseResultMap">
+    SELECT * FROM classify where parent_id =#{id}
   </select>
 </mapper>

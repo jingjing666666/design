@@ -1,7 +1,9 @@
 package dao.test;
 
+import com.alibaba.fastjson.JSON;
 import com.jingjing.manage.dao.ArticleDao;
 import com.jingjing.manage.entity.Article;
+import com.jingjing.manage.param.PageParam;
 import com.jingjing.manage.util.DateUtil;
 import org.junit.Assert;
 import org.junit.Test;
@@ -9,6 +11,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 
 /**
  * Created by 13 on 2018/1/17.
@@ -21,17 +26,16 @@ public class ArticleDaoTest {
 
     @Test
     public void insertArticleTest() throws Exception {
-        Article article = new Article();
-        article.setArticleContent("article");
-        article.setAddName("13");
-        article.setArticleClassID(1);
-        article.setArticleTitle("title");
-        article.setArticleCreateDate(DateUtil.getCurrentDateStr());
-        Assert.assertTrue(article.getId()==null);
-        System.out.println("insert前article的id:"+article.getId());
-        articleDao.insertArticle(article);
-        Assert.assertTrue(article.getId()!=null);
-        System.out.println("insert后article的id:"+article.getId());
+        PageParam pageParam = new PageParam();
+        pageParam.setPage(1);
+        pageParam.setPageSize(10);
+        pageParam.setType(8);
+
+        System.out.println(JSON.toJSON(articleDao.selectAll(pageParam)));
+    }
+    @Test
+    public void articleTest(){
+
     }
 
 }

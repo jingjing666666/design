@@ -54,9 +54,8 @@ public class ArticleControllerTest {
     public void testArticleAdd() throws Exception {
         //创建文章对象
         Article article = new Article();
-        article.setAddName("13");
-        article.setArticleTitle("title");
-        article.setArticleContent("content");
+        article.setTitle("title");
+        article.setContent("content");
         String requestParam = JSONObject.toJSONString(article);
         //请求方式为post
         MockHttpServletRequestBuilder mockHttpServletRequestBuilder = MockMvcRequestBuilders.post("/articles");

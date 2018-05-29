@@ -33,9 +33,9 @@
     <tr>
         <th field="cb" checkbox="true" align="center"></th>
         <th field="id" width="10%" align="center" hidden="true">编号</th>
-        <th field="articleTitle" width="200" align="center">标题</th>
-        <th field="articleCreateDate" width="150" align="center">创建时间</th>
-        <th field="addName" width="150" align="center">添加人</th>
+        <th field="title" width="200" align="center">标题</th>
+        <th field="createTime" width="150" align="center">创建时间</th>
+        <th field="userId" width="150" align="center">添加人</th>
         <th field="content" width="70" align="center"
             formatter="formatHref">操作
         </th>
@@ -53,7 +53,7 @@
             iconCls="icon-remove" plain="true"><div style="color: #DC143C;">删除</div></a>
     </div>
     <div>
-        &nbsp;<span style="color: #1E90FF;">标题：</span>&nbsp;<input type="text" id="articleTitle" size="20"
+        &nbsp;<span style="color: #1E90FF;">标题：</span>&nbsp;<input type="text" id="title" size="20"
                               onkeydown="if(event.keyCode==13) searchArticle()"/>&nbsp; <a
             href="javascript:searchArticle()" class="easyui-linkbutton"
             iconCls="icon-search" plain="true"><div style="color: #1E90FF;">搜索</div></a>
@@ -67,7 +67,7 @@
         <table cellspacing="8px">
             <tr>
                 <td>标题：</td>
-                <td><input type="text" id="title" name="articleTitle"
+                <td><input type="text" id="title" name="title"
                            class="easyui-validatebox" required="true"/>&nbsp;<font
                         color="red">*</font>
                     <input id="articleIdfm" name="id" type="hidden" value="0">
@@ -75,7 +75,7 @@
             </tr>
             <tr>
                 <td>添加人：</td>
-                <td><input type="text" id="addName" name="addName"/>
+                <td><input type="text" id="addName" name="userId"/>
                 </td>
             </tr>
             <tr>
@@ -114,7 +114,7 @@
     }
     function searchArticle() {
         $("#dg").datagrid('load', {
-            "articleTitle": $("#articleTitle").val(),
+            "title": $("#title").val(),
         });
     }
 
@@ -168,7 +168,7 @@
     }
 
     function openArticleAddDialog() {
-        var html = '<div id="myEditor" name="articleContent"></div>';
+        var html = '<div id="myEditor" name="content"></div>';
         $('#editor').append(html);
         ResetEditor(editor);
         var ue = UE.getEditor('myEditor');
@@ -182,7 +182,7 @@
         var addName = $("#addName").val();
         var content = UE.getEditor('myEditor').getContent();
         var id = $("#articleIdfm").val();
-        var data = {"id": id, "articleTitle": title, "articleContent": content, "addName": addName}
+        var data = {"id": id, "title": title, "content": content, "userId": addName}
         $.ajax({
             type: method,//方法类型
             dataType: "json",//预期服务器返回的数据类型

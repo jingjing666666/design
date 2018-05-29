@@ -1,5 +1,8 @@
 package com.jingjing.manage.service;
 
+import com.github.pagehelper.PageInfo;
+import com.jingjing.manage.dto.PictureDto;
+import com.jingjing.manage.entity.Article;
 import com.jingjing.manage.entity.Picture;
 
 import java.util.List;
@@ -46,7 +49,7 @@ public interface PictureService {
 	 * @param id
 	 * @return
 	 */
-	public int deletePicture(String id);
+	public int deletePicture(Integer id);
 
 	/**
 	 * 根据id查找
@@ -54,5 +57,7 @@ public interface PictureService {
 	 * @param id
 	 * @return
 	 */
-	public Picture findById(String id);
+	public Picture findById(Integer id);
+
+	PageInfo<PictureDto> pictureList(Integer page, Integer pageSize, Integer type);
 }

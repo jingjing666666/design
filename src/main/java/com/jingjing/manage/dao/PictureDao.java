@@ -1,5 +1,7 @@
 package com.jingjing.manage.dao;
 
+import com.jingjing.manage.dto.PictureDto;
+import com.jingjing.manage.entity.Article;
 import com.jingjing.manage.entity.Picture;
 
 import java.util.List;
@@ -47,7 +49,7 @@ public interface PictureDao {
      * @param id
      * @return
      */
-    public int delPicture(String id);
+    public int delPicture(Integer id);
 
     /**
      * 根据id查找
@@ -55,5 +57,11 @@ public interface PictureDao {
      * @param id
      * @return
      */
-    public Picture findPictureById(String id);
+    public Picture findPictureById(Integer id);
+
+    /**
+     * 查找文章列表
+     * @return
+     */
+    List<PictureDto> selectAll(Integer type);
 }

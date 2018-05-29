@@ -3,20 +3,27 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jingjing.manage.dao.ArticleDao">
-    <resultMap type="Article" id="ArticleResult">
-        <result property="id" column="id"/>
-        <result property="articleTitle" column="article_title"/>
-        <result property="articleCreateDate" column="article_create_date"/>
-        <result property="articleContent" column="article_content"/>
-        <result property="isTop" column="is_top"/>
-        <result property="addName" column="add_name"/>
+    <resultMap id="ArticleResult" type="com.jingjing.manage.entity.Article">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="title" jdbcType="VARCHAR" property="title" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="is_top" jdbcType="INTEGER" property="isTop" />
+        <result column="user_id" jdbcType="INTEGER" property="userId" />
+        <result column="url" jdbcType="VARCHAR" property="url" />
+        <result column="classify_id" jdbcType="INTEGER" property="classifyId" />
+        <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+        <result column="content" jdbcType="LONGVARCHAR" property="content" />
+    </resultMap>
+    <resultMap id="ArticleDtoMap" type="com.jingjing.manage.dto.ArticleDto" extends="ArticleResult">
+        <result column="username" jdbcType="VARCHAR" property="user" />
+        <result column="classifyname" jdbcType="VARCHAR" property="classifyName" />
     </resultMap>
 
     <select id="findArticles" parameterType="Map" resultMap="ArticleResult">
-        select id,article_title,article_create_date,article_content,add_name from article
+        select * from article
         <where>
-            <if test="articleTitle!=null and articleTitle!='' ">
-                and article_title like #{articleTitle}
+            <if test="title!=null and title!='' ">
+                and ttitle like #{title}
             </if>
         </where>
         <if test="start!=null and size!=null">
@@ -27,35 +34,49 @@
     <select id="getTotalArticles" parameterType="Map" resultType="Long">
         select count(*) from article
         <where>
-            <if test="articleTitle!=null and articleTitle!='' ">
-                and article_title like #{articleTitle}
+            <if test="title!=null and title!='' ">
+                and title like #{title}
             </if>
         </where>
     </select>
 
     <insert id="insertArticle" useGeneratedKeys="true" keyProperty="id" parameterType="Article">
 		insert into
-		article(article_title,article_create_date,article_content,add_name)
-		values(#{articleTitle},#{articleCreateDate},#{articleContent},#{addName})
+		article(title,create_time,content,user_id,classify_id)
+		values(#{title},#{createTime},#{content},#{userId},#{classifyId})
 	</insert>
 
     <update id="updArticle" parameterType="Article">
-		update ssm_article
+		update article
 		set
-		title=#{articleTitle},article_content=#{articleContent},
-		add_name=#{addName}
+		title=#{title},content=#{content},classify_id=#{classifyId}
 		where id=#{id}
 	</update>
 
 
-    <delete id="delArticle" parameterType="String">
+    <delete id="delArticle" parameterType="Integer">
 		delete from
 		article
 		where id=#{id}
 	</delete>
 
-    <select id="getArticleById" parameterType="String" resultMap="ArticleResult">
-		select id,article_title,article_create_date,article_content,add_name
+    <select id="getArticleById" parameterType="Integer" resultMap="ArticleResult">
+		select id,title,create_time,content
 		from article where id=#{id}
 	</select>
+
+    <select id="selectAllByType"  resultMap="ArticleDtoMap">
+       SELECT a.*,u.user_name as username,(SELECT c.name from classify c where c.id =a.classify_id)as classifyname FROM article a LEFT JOIN  user u on u.id =a.user_id
+    </select>
+    <select id="selectAll"  resultMap="ArticleDtoMap" parameterType="com.jingjing.manage.param.PageParam">
+        SELECT a.*,u.user_name as username,(SELECT c.name from classify c where c.id =a.classify_id)as classifyname
+        FROM article a LEFT JOIN  user u on u.id =a.user_id
+        <if test="type != null and type!=''">
+            where classify_id =#{type}
+        </if>
+    </select>
+
+
+
+
 </mapper> 
