@@ -65,6 +65,7 @@ public class ArticleServiceImpl implements ArticleService {
             return 0;
         }
         article.setTitle(AntiXssUtil.replaceHtmlCode(article.getTitle()));
+        article.setUpdateTime(new Date());
         if (articleDao.updArticle(article) > 0) {
             log.info("update article success,delete article in redis and save again");
             redisUtil.del(Constants.ARTICLE_CACHE_KEY + article.getId());
